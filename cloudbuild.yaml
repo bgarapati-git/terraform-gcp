@@ -21,7 +21,8 @@ steps:
       else
         for dir in environments/*/
         do 
-          cd ${dir}   
+          cd ${dir}
+          echo  "DIR  ${dir}"
           env=${dir%*/}
           env=${env#*/}
           echo ""
