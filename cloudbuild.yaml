@@ -15,11 +15,11 @@ steps:
   args: 
   - '-c'
   - |
-      if [ -d "./$BRANCH_NAME/" ]; then
-        cd ./$BRANCH_NAME
+      if [ -d "environments/$BRANCH_NAME/" ]; then
+        cd environments/$BRANCH_NAME
         terraform init
       else
-        for dir in environments/*/
+        for dir in */
         do 
           cd ${dir}   
           env=${dir%*/}
