@@ -1,10 +1,9 @@
 provider "google" {
   project = var.project_id
   region  = "us-central1"
-  zone    = "us-central1-c"https://github.com/bgarapati-git/terraform-gcp
+  zone    = "us-central1-c"
 }
 
- 
 resource "google_storage_bucket" "bucket" {
   name          = var.bucket_name
   project       = var.project_id
