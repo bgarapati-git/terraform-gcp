@@ -23,6 +23,7 @@ steps:
         do 
           cd ${dir}
           echo  "DIR  ${dir}"
+          sudo ls
           env=${dir%*/}
           env=${env#*/}
           echo ""
