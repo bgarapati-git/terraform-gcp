@@ -31,11 +31,6 @@ EOF
   default     = "STANDARD"
 }
 
-variable "labels" {
-  description = "Labels to assign on the GCS bucket."
-  type        = map(any)
-}
-
 variable "enable_versioning" {
   description = "Enable GCS Bucket versioning."
   type        = bool
