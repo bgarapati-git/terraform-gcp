@@ -1,13 +1,21 @@
 provider "google" {
-  project = "{{YOUR GCP PROJECT}}"
+  project = var.project_id
   region  = "us-central1"
-  zone    = "us-central1-c"
+  zone    = "us-central1-c"https://github.com/bgarapati-git/terraform-gcp
 }
 
  
-resource "google_storage_bucket" "image-storessssssssssss" {
-  name     = "image-storessssssssssss-bucket"
-  location = "EU"
+resource "google_storage_bucket" "bucket" {
+  name          = var.bucket_name
+  project       = var.project_id
+  location      = var.gcs_location
+  force_destroy = var.force_destroy
+  storage_class = var.storage_class
+  labels        = var.labels
+
+  versioning {
+    enabled = var.enable_versioning
+  }
  
   website {
     main_page_suffix = "index.html"
@@ -16,7 +24,7 @@ resource "google_storage_bucket" "image-storessssssssssss" {
 }
  
 resource "google_storage_bucket_iam_binding" "binding" {
-  bucket = google_storage_bucket.image-storessssssssssss.name
+  bucket = google_storage_bucket.bucket.name
   role = "roles/storage.admin"
   members = [
    "allAuthenticatedUsers",
