@@ -1,5 +1,11 @@
 # Input variable definitions
 
+
+variable "service_account_json_path" {
+  description = "Google Cloud service account json path"
+  type        = string
+}
+
 variable "bucket_name" {
   description = "Google Cloud Storage (GCS) bucket Name."
   type        = string
