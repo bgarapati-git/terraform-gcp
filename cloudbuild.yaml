@@ -23,7 +23,6 @@ steps:
         do 
           cd ${dir}
           echo  "DIR  ${dir}"
-          sudo ls
           env=${dir%*/}
           env=${env#*/}
           echo ""
@@ -55,7 +54,7 @@ steps:
           echo "*************** TERRAFOM PLAN ******************"
           echo "******* At environment: ${env} ********"
           echo "*************************************************"
-          terraform plan || exit 1
+          terraform plan -var-file="variables.tfvars" || exit 1
           cd ../../
         done
       fi 
