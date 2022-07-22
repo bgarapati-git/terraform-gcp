@@ -80,7 +80,7 @@ steps:
         #echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
         #echo "*******************************************************************************"
         echo "PWDcvzvxcvzxvxzvccccccccccccccccccccccccc"
-        echo switched "($PWD)"
+        echo  "($PWD)"
         for dir in environments/*/
         do 
           cd ${dir}   
@@ -91,7 +91,7 @@ steps:
           echo "*************** TERRAFOM PLAN ******************"
           echo "******* At environment: ${env} ********"
           echo "*************************************************"
-          echo switched "($PWD)"
+          echo  "($PWD)"
           echo "($ls)"
           terraform apply -var-file="variables.tfvars" -auto-approve || exit 1
           cd ../../
