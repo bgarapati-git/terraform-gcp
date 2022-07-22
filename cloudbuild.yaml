@@ -71,13 +71,14 @@ steps:
   - '-c'
   - | 
       if [ -d "environments/$BRANCH_NAME/" ]; then
-        echo "PWD {pwd}"
+        echo "PWDcvzvxcvzxvxzvccccccccccccccccccccccccc"
         cd environments/$BRANCH_NAME      
         terraform apply -var-file="variables.tfvars" -auto-approve
       else
         #echo "***************************** SKIPPING APPLYING *******************************"
         #echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
         #echo "*******************************************************************************"
+        echo "PWDcvzvxcvzxvxzvccccccccccccccccccccccccc"
         echo "PWD {pwd}"
         for dir in environments/*/
         do 
