@@ -94,7 +94,9 @@ steps:
           echo "*************** TERRAFOM PLAN ******************"
           echo "******* At environment: ${env} ********"
           echo "*************************************************"
-    
+          echo "appying...."
+          pwd
+          ls 
           terraform apply -var-file="variables.tfvars" -auto-approve || exit 1
           cd ../../
         done
