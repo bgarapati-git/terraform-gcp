@@ -6,7 +6,7 @@ provider "google" {
 }
 
 resource "google_storage_bucket" "bucket" {
-  name          = "{var.bucket_name}-{var.project_id}"
+  name          = "${var.bucket_name}-${var.project_id}"
   project       = var.project_id
   location      = var.gcs_location
   force_destroy = var.force_destroy
