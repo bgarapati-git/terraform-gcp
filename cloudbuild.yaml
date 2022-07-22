@@ -81,6 +81,7 @@ steps:
       
         cd environments/$BRANCH_NAME/terraform-gcp
         echo "PWDcvzvxcvzxvxzvccccccccccccccccccccccccc"
+        echo pwd
         
         for dir in environments/*/
         do 
@@ -92,8 +93,7 @@ steps:
           echo "*************** TERRAFOM PLAN ******************"
           echo "******* At environment: ${env} ********"
           echo "*************************************************"
-          echo  "($PWD)"
-          echo "($ls)"
+    
           terraform apply -var-file="variables.tfvars" -auto-approve || exit 1
           cd ../../
         done
