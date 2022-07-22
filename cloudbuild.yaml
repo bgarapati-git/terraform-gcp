@@ -82,27 +82,10 @@ steps:
         #echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
         #echo "*******************************************************************************"
       
-        cd environments/$BRANCH_NAME/terraform-gcp
         echo "PWDcvzvxcvzxvxzvccccccccccccccccccccccccc"
         pwd
         ls
-        
-        for dir in environments/*/
-        do 
-          cd ${dir}   
-          env=${dir%*/}
-          echo  "second condition env  ${env}" 
-          env=${env#*/} 
-          echo ""
-          echo "*************** TERRAFOM PLAN ******************"
-          echo "******* At environment: ${env} ********"
-          echo "*************************************************"
-          echo "appying...."
-          pwd
-          ls 
-          terraform apply -var-file="/workspace/variables.tfvars" -auto-approve || exit 1
-          cd ../../
-        done
+        terraform apply -var-file="/workspace/variables.tfvars" -auto-approve || exit 1   
       fi
 # [END tf-apply]      
 
