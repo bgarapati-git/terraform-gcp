@@ -77,6 +77,7 @@ steps:
         #echo "***************************** SKIPPING APPLYING *******************************"
         #echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
         #echo "*******************************************************************************"
+        echo "PWD {pwd}"
         for dir in environments/*/
         do 
           cd ${dir}   
