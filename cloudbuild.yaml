@@ -73,14 +73,15 @@ steps:
       if [ -d "environments/$BRANCH_NAME/" ]; then
         echo "PWDcvzvxcvzxvxzvccccccccccccccccccccccccc"
         cd environments/$BRANCH_NAME    
-        echo switched "($PWD)"
         terraform apply -var-file="variables.tfvars" -auto-approve
       else
         #echo "***************************** SKIPPING APPLYING *******************************"
         #echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
         #echo "*******************************************************************************"
+      
+        cd environments/$BRANCH_NAME/terraform-gcp
         echo "PWDcvzvxcvzxvxzvccccccccccccccccccccccccc"
-        echo  "($PWD)"
+        
         for dir in environments/*/
         do 
           cd ${dir}   
