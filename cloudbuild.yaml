@@ -57,7 +57,10 @@ steps:
           echo "*************** TERRAFOM PLAN ******************"
           echo "******* At environment: ${env} ********"
           echo "*************************************************"
-          terraform plan -var-file="/workspace/variables.tfvars" || exit 1
+          echo "paln...."
+          pwd
+          ls
+          terraform plan -var-file="workspace/variables.tfvars" || exit 1
           cd ../../
         done
       fi 
@@ -97,7 +100,7 @@ steps:
           echo "appying...."
           pwd
           ls 
-          terraform apply -var-file="/workspace/variables.tfvars" -auto-approve || exit 1
+          terraform apply -var-file="workspace/variables.tfvars" -auto-approve || exit 1
           cd ../../
         done
       fi
