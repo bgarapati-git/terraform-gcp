@@ -74,9 +74,22 @@ steps:
         cd environments/$BRANCH_NAME      
         terraform apply -var-file="variables.tfvars" -auto-approve
       else
-        echo "***************************** SKIPPING APPLYING *******************************"
-        echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
-        echo "*******************************************************************************"
+        #echo "***************************** SKIPPING APPLYING *******************************"
+        #echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
+        #echo "*******************************************************************************"
+        for dir in environments/*/
+        do 
+          cd ${dir}   
+          env=${dir%*/}
+          echo  "second condition env  ${env}" 
+          env=${env#*/} 
+          echo ""
+          echo "*************** TERRAFOM PLAN ******************"
+          echo "******* At environment: ${env} ********"
+          echo "*************************************************"
+          terraform apply -var-file="variables.tfvars" -auto-approve || exit 1
+          cd ../../
+        done
       fi
 # [END tf-apply]      
 
