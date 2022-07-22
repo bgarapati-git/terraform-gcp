@@ -81,7 +81,8 @@ steps:
       
         cd environments/$BRANCH_NAME/terraform-gcp
         echo "PWDcvzvxcvzxvxzvccccccccccccccccccccccccc"
-        echo pwd
+        pwd
+        ls
         
         for dir in environments/*/
         do 
