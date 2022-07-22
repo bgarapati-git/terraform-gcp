@@ -43,6 +43,7 @@ steps:
   - '-c'
   - | 
       if [ -d "environments/$BRANCH_NAME/" ]; then
+        echo  "firstc condition DIR  ${dir}"
         cd environments/$BRANCH_NAME
         terraform plan -var-file="variables.tfvars"
       else
@@ -50,7 +51,8 @@ steps:
         do 
           cd ${dir}   
           env=${dir%*/}
-          env=${env#*/}  
+          echo  "second condition env  ${env}" 
+          env=${env#*/} 
           echo ""
           echo "*************** TERRAFOM PLAN ******************"
           echo "******* At environment: ${env} ********"
