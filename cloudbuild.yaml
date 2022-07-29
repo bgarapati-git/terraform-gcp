@@ -16,14 +16,12 @@ steps:
   - '-c'
   - |
       if [ -d "environments/$BRANCH_NAME/" ]; then
-        echo  "firstc condition DIR  ${dir}"
         cd environments/$BRANCH_NAME
         terraform init
       else
         for dir in environments/*/
         do 
           cd ${dir}
-          echo  "second condition DIR  ${dir}"
           env=${dir%*/}
           env=${env#*/}
           echo ""
@@ -43,7 +41,6 @@ steps:
   - '-c'
   - | 
       if [ -d "environments/$BRANCH_NAME/" ]; then
-        echo  "firstc condition DIR  ${dir}"
         cd environments/$BRANCH_NAME
         terraform plan -var-file="variables.tfvars"
       else
@@ -51,15 +48,11 @@ steps:
         do 
           cd ${dir}   
           env=${dir%*/}
-          echo  "second condition env  ${env}" 
           env=${env#*/} 
           echo ""
           echo "*************** TERRAFOM PLAN ******************"
           echo "******* At environment: ${env} ********"
           echo "*************************************************"
-          echo "paln...."
-          pwd
-          ls
           terraform plan -var-file="/workspace/variables.tfvars" || exit 1
           cd ../../
         done
@@ -74,18 +67,12 @@ steps:
   - '-c'
   - | 
       if [ -d "environments/$BRANCH_NAME/" ]; then
-        echo "PWDcvzvxcvzxvxzvccccccccccccccccccccccccc"
         cd environments/$BRANCH_NAME    
         terraform apply -var-file="variables.tfvars" -auto-approve
       else
         #echo "***************************** SKIPPING APPLYING *******************************"
         #echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
         #echo "*******************************************************************************"
-      
-        echo "PWDcvzvxcvzxvxzvccccccccccccccccccccccccc"
-        pwd
-        ls
-        terraform apply -var-file="/workspace/variables.tfvars" -auto-approve || exit 1   
       fi
 # [END tf-apply]      
 
