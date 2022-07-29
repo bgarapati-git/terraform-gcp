@@ -69,12 +69,14 @@ steps:
 
 # [START Terraform plan scanning ]
 - id: 'Plan Scanning with Checkov'
-  name: 'python'
+  name: 'pipenv'
   entrypoint: 'sh'
   args: 
   - '-c'
   - |
-      checkov -f /workspace/tf.json || exit 1
+      pipenv install
+      pipenv run pip install checkov
+      pipenv run checkov -f /workspace/tf.json || exit 1
 # [END Terraform plan scanning]  
 
 # [START tf-apply]
