@@ -40,7 +40,8 @@ steps:
       pip install checkov
       echo "**********install*******"
       ls
-      checkov -f tf.json -o json >result.json || exit 1
+      checkov -f tf.json -o json >result.json
+      cat result.json
       echo "*****************"
 # [END Terraform plan scanning]  
 
