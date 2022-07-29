@@ -69,6 +69,7 @@ steps:
   - |
       pip install checkov
       echo "************Checkov installed******************"
+      cat /workspace/tf.json
       checkov -f /workspace/tf.json
       echo "************Checkov done******************"
 # [END Terraform plan scanning]  
