@@ -63,10 +63,7 @@ steps:
 - id: 'Python Installation'
   name: 'python'
   entrypoint: 'pip'
-  args:
-  - 'install'
-  - |
-      echo "**********Installed Checkov***********************"
+  args: ["install", "-r", "requirements.txt", "--user"]
 # [END Python Installation]   
 
 # [START tf-apply]
