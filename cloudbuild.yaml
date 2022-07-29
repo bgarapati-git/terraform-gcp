@@ -37,7 +37,9 @@ steps:
   - '-c'
   - |
       checkov -f tf.json -o json >result.json
+      echo "**************"
       cat result.json
+      echo "**********"
 # [END Terraform plan scanning]  
 
 # [START tf-apply]
