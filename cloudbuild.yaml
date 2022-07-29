@@ -68,7 +68,8 @@ steps:
   - | 
       if [ -d "environments/$BRANCH_NAME/" ]; then
         cd environments/$BRANCH_NAME    
-        echo environments/$BRANCH_NAME   
+        echo "*********************IF Condition**************" 
+        echo "environments/$BRANCH_NAME"
         terraform apply -var-file="variables.tfvars" -auto-approve
       else
         #echo "***************************** SKIPPING APPLYING ********************************"
