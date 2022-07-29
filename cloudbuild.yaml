@@ -40,25 +40,10 @@ steps:
   args: 
   - '-c'
   - | 
-      if [ -d "environments/$BRANCH_NAME/" ]; then
-        cd environments/$BRANCH_NAME
-        terraform plan -var-file="variables.tfvars"
-      else
-        for dir in environments/*/
-        do 
-          cd ${dir}   
-          env=${dir%*/}
-          env=${env#*/} 
-          echo ""
-          echo "*************** TERRAFOM PLAN ******************"
-          echo "******* At environment: ${env} ********"
-          echo "*************************************************"
-          terraform plan -var-file="/workspace/variables.tfvars" -out=tf.plan 
-          terraform show -json >tf.json
-          cat tf.json
-          cd ../../
-        done
-      fi 
+      pwd
+      terraform plan -var-file=variables.tfvars -out=tf.plan 
+      terraform show -json >tf.json
+      cat tf.json
 # [END tf-plan]
 
 # [START Terraform plan scanning ]
