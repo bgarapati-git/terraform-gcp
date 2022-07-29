@@ -36,7 +36,7 @@ steps:
 # [START tf-plan]
 - id: 'tf plan'
   name: 'hashicorp/terraform:1.0.0'
-  entrypoint: 'sh'
+  entrypoint: 'bash'
   args: 
   - '-c'
   - | 
@@ -55,6 +55,7 @@ steps:
           echo "*************************************************"
           terraform plan -var-file="/workspace/variables.tfvars" -out=tf.plan || exit 1
           terraform show -json >tf.json
+          cat tf.json
           cd ../../
         done
       fi 
