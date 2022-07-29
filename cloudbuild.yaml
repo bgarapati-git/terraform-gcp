@@ -70,8 +70,10 @@ steps:
       pip install checkov
       echo "************Checkov installed******************"
       pwd
-      checkov -f tf.json -o junitxml >result.json 
+      checkov -f tf.json -o json >result.json
+      echo "tf.json****"
       cat tf.json
+      echo "result.json****"
       cat result.json
       echo "************Checkov done******************"
 # [END Terraform plan scanning]  
