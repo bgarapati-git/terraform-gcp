@@ -70,7 +70,7 @@ steps:
 # [START Terraform plan scanning ]
 - id: 'Plan Scanning with Checkov'
   name: 'python'
-  entrypoint: 'python'
+  entrypoint: 'pip'
   args: 
   - '-c'
   - |
