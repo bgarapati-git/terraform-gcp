@@ -60,7 +60,7 @@ steps:
       fi 
 # [END tf-plan]
 
-[START Python Installation & Checkov ]
+# [START Python Installation & Checkov ]
 - id: 'Python Installation'
   name: 'python'
   entrypoint: 'pip'
@@ -70,7 +70,7 @@ steps:
 # [START Terraform plan scanning ]
 - id: 'Plan Scanning with Checkov'
   name: 'python'
-  entrypoint: 'pip'
+  entrypoint: 'python'
   args: 
   - '-c'
   - |
