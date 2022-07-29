@@ -59,6 +59,16 @@ steps:
       fi 
 # [END tf-plan]
 
+# [START Checkov Installation]
+- id: 'Checkov Validate'
+  name: 'checkov'
+  entrypoint: 'pip3'
+  args:
+  - 'install'
+  - |
+      echo "**********Installed Checkov***********************"
+# [END Checkov Installation]   
+
 # [START tf-apply]
 - id: 'tf apply'
   name: 'hashicorp/terraform:1.0.0'
