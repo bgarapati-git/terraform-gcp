@@ -60,9 +60,9 @@ steps:
 # [END tf-plan]
 
 # [START Checkov Installation]
-- id: 'Checkov Validate'
+- id: 'Checkov Installation'
   name: 'checkov'
-  entrypoint: 'pip3'
+  entrypoint: 'pip'
   args:
   - 'install'
   - |
