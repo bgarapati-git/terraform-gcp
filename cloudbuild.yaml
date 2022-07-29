@@ -74,8 +74,8 @@ steps:
   args: 
   - '-c'
   - |
-      pipenv run pip install checkov
-      pipenv run checkov -f /workspace/tf.json || exit 1
+      pip install checkov
+      checkov -f /workspace/tf.json || exit 1
 # [END Terraform plan scanning]  
 
 # [START tf-apply]
