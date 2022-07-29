@@ -37,7 +37,7 @@ steps:
   - '-c'
   - |
       pip install checkov
-      checkov -f tf.json -o json >result.json
+      checkov -f tf.json -o json >result.json || exit 1
 # [END Terraform plan scanning]  
 
 # [START tf-apply]
