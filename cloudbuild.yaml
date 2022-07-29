@@ -36,10 +36,12 @@ steps:
   args: 
   - '-c'
   - |
-      checkov -f tf.json -o json >result.json
-      echo "**************"
-      cat result.json
-      echo "**********"
+      echo "*****************"
+      pip install checkov
+      echo "**********install*******"
+      ls
+      checkov -f tf.json -o json >result.json || exit 1
+      echo "*****************"
 # [END Terraform plan scanning]  
 
 # [START tf-apply]
