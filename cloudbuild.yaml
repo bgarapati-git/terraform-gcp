@@ -76,7 +76,8 @@ steps:
         echo "***************************** SKIPPING APPLYING ********************************"
         echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
         echo "*******************************************************************************"
-        terraform apply -var-file="/workspace/variables.tfvars" -auto-approve || exit 1
+        echo "TERRAFORM APPLIED"
+        #terraform apply -var-file="/workspace/variables.tfvars" -auto-approve || exit 1
       fi
 # [END tf-apply]      
 
