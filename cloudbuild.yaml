@@ -36,8 +36,11 @@ steps:
   args: 
   - '-c'
   - |
+      echo "*****************"
       pip install checkov
+      echo "**********install*******"
       checkov -f tf.json -o json >result.json || exit 1
+      echo "*****************"
 # [END Terraform plan scanning]  
 
 # [START tf-apply]
