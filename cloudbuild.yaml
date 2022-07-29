@@ -69,7 +69,7 @@ steps:
 
 # [START Terraform plan scanning ]
 - id: 'Plan Scanning with Checkov'
-  name: 'hashicorp/terraform:1.0.0'
+  name: 'python'
   entrypoint: 'sh'
   args: 
   - '-c'
