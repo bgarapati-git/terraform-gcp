@@ -43,7 +43,7 @@ steps:
       pwd
       terraform plan -var-file=variables.tfvars -out=tf.plan 
       echo "************terraform show******************"
-      terraform show -json >tf.json
+      terraform show -json tf.plan >tf.json
       echo "************terraform end******************"
       cat tf.json
       echo "************tf.json******************"
