@@ -63,7 +63,7 @@ steps:
 # [START Terraform plan scanning ]
 - id: 'Plan Scanning with Checkov'
   name: 'python'
-  entrypoint: 'sh'
+  entrypoint: 'bash'
   args: 
   - '-c'
   - |
@@ -71,7 +71,8 @@ steps:
       echo "************Checkov installed******************"
       pwd
       checkov -f tf.json -o junitxml >result.json 
-      ls
+      cat tf.json
+      cat result.json
       echo "************Checkov done******************"
 # [END Terraform plan scanning]  
 
