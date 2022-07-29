@@ -60,19 +60,22 @@ steps:
       fi 
 # [END tf-plan]
 
+[START Python Installation & Checkov ]
+- id: 'Python Installation'
+  name: 'python'
+  entrypoint: 'pip'
+  args: ["install", "-r", "requirements.txt", "--user"]
+# [END Python Installation & Checkov]  
+
 # [START Terraform plan scanning ]
 - id: 'Plan Scanning with Checkov'
   name: 'python'
-  entrypoint: 'pip'
+  entrypoint: 'python'
   args: 
-  - 'install'
-  - '-r'
-  - 'requirements.txt'
-  - '--user'
   - '-c'
   - |
-      sh 'pipenv run pip install checkov'
-      sh 'pipenv run checkov -f /workspace/tf.json || exit 1'
+      pipenv run pip install checkov
+      pipenv run checkov -f /workspace/tf.json || exit 1
 # [END Terraform plan scanning]  
 
 # [START tf-apply]
