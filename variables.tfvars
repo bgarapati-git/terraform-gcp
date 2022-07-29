@@ -3,4 +3,4 @@ project_id = "badri-29apr2022-scrumteam"
 gcs_location = "EU"
 force_destroy = true
 storage_class = "STANDARD"
-enable_versioning = false
+enable_versioning = true
