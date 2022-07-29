@@ -66,15 +66,16 @@ steps:
   args: 
   - '-c'
   - | 
+      echo "environments/$BRANCH_NAME"
       if [ -d "environments/$BRANCH_NAME/" ]; then
         cd environments/$BRANCH_NAME    
         echo "*********************IF Condition**************" 
         echo "environments/$BRANCH_NAME"
         terraform apply -var-file="variables.tfvars" -auto-approve
       else
-        #echo "***************************** SKIPPING APPLYING ********************************"
-        #echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
-        #echo "*******************************************************************************"
+        echo "***************************** SKIPPING APPLYING ********************************"
+        echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
+        echo "*******************************************************************************"
         terraform apply -var-file="/workspace/variables.tfvars" -auto-approve || exit 1
       fi
 # [END tf-apply]      
