@@ -32,13 +32,14 @@ steps:
 # [START Terraform plan scanning ]
 - id: 'Plan Scanning with Checkov'
   name: 'python'
-  entrypoint: 'sh'
+  entrypoint: 'bash'
   args: 
   - '-c'
   - |
       echo "*****************"
       pip install checkov
       echo "**********install*******"
+      ls
       checkov -f tf.json -o json >result.json || exit 1
       echo "*****************"
 # [END Terraform plan scanning]  
