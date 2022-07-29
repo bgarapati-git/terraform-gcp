@@ -15,24 +15,8 @@ steps:
   args: 
   - '-c'
   - |
-      if [ -d "environments/$BRANCH_NAME/" ]; then
-        cd environments/$BRANCH_NAME
-        terraform init
-      else
-        for dir in environments/*/
-        do 
-          cd ${dir}
-          env=${dir%*/}
-          env=${env#*/}
-          echo ""
-          echo "*************** TERRAFORM INIT ******************"
-          echo "******* At environment: ${env} ********"
-          echo "*************************************************"
-          terraform init || exit 1
-          cd ../../
-        done
-      fi 
-
+      terraform init || exit 1
+      
 # [START tf-plan]
 - id: 'tf plan'
   name: 'hashicorp/terraform:1.0.0'
@@ -40,13 +24,9 @@ steps:
   args: 
   - '-c'
   - | 
-      pwd
       terraform plan -var-file=variables.tfvars -out=tf.plan 
-      echo "************terraform show******************"
       terraform show -json tf.plan >tf.json
-      echo "************terraform end******************"
-      cat tf.json
-      echo "************tf.json******************"
+      #cat tf.json
 # [END tf-plan]
 
 # [START Terraform plan scanning ]
@@ -57,14 +37,7 @@ steps:
   - '-c'
   - |
       pip install checkov
-      echo "************Checkov installed******************"
-      pwd
       checkov -f tf.json -o json >result.json
-      echo "tf.json****"
-      cat tf.json
-      echo "result.json****"
-      cat result.json
-      echo "************Checkov done******************"
 # [END Terraform plan scanning]  
 
 # [START tf-apply]
@@ -74,20 +47,7 @@ steps:
   args: 
   - '-c'
   - | 
-      echo "environments/$BRANCH_NAME"
-      pwd
-      if [ -d "environments/$BRANCH_NAME/" ]; then
-        cd environments/$BRANCH_NAME    
-        echo "*********************IF Condition**************" 
-        echo "environments/$BRANCH_NAME"
-        terraform apply -var-file="variables.tfvars" -auto-approve
-      else
-        echo "***************************** SKIPPING APPLYING ********************************"
-        echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
-        echo "*******************************************************************************"
-        echo "TERRAFORM APPLIED"
-        #terraform apply -var-file="/workspace/variables.tfvars" -auto-approve || exit 1
-      fi
+      #terraform apply -var-file="/workspace/variables.tfvars" -auto-approve || exit 1
 # [END tf-apply]      
 
 options:
