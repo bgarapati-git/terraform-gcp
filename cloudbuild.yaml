@@ -67,6 +67,7 @@ steps:
   - '-c'
   - | 
       echo "environments/$BRANCH_NAME"
+      echo pwd
       if [ -d "environments/$BRANCH_NAME/" ]; then
         cd environments/$BRANCH_NAME    
         echo "*********************IF Condition**************" 
