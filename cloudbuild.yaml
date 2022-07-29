@@ -59,15 +59,15 @@ steps:
       fi 
 # [END tf-plan]
 
-# [START Checkov Installation]
-- id: 'Checkov Installation'
-  name: 'checkov'
+# [START Python Installation]
+- id: 'Python Installation'
+  name: 'python'
   entrypoint: 'pip'
   args:
   - 'install'
   - |
       echo "**********Installed Checkov***********************"
-# [END Checkov Installation]   
+# [END Python Installation]   
 
 # [START tf-apply]
 - id: 'tf apply'
