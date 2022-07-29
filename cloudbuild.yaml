@@ -69,6 +69,8 @@ steps:
   - |
       pip install checkov
       echo "************Checkov installed******************"
+      ls
+      pwd
       cat /workspace/tf.json
       checkov -f /workspace/tf.json
       echo "************Checkov done******************"
