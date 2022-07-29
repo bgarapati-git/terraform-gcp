@@ -53,18 +53,29 @@ steps:
           echo "*************** TERRAFOM PLAN ******************"
           echo "******* At environment: ${env} ********"
           echo "*************************************************"
-          terraform plan -var-file="/workspace/variables.tfvars" || exit 1
+          terraform plan -var-file="/workspace/variables.tfvars" -out=tf.plan || exit 1
+          terraform show -json >tf.json
           cd ../../
         done
       fi 
 # [END tf-plan]
 
-# [START Python Installation]
+# [START Python Installation & Checkov ]
 - id: 'Python Installation'
   name: 'python'
   entrypoint: 'pip'
   args: ["install", "-r", "requirements.txt", "--user"]
-# [END Python Installation]   
+# [END Python Installation & Checkov]   
+
+# [START Terraform plan scanning ]
+- id: 'Plan Scanning with Checkov'
+  name: 'hashicorp/terraform:1.0.0'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - |
+      checkov -f /workspace/tf.json || exit 1
+# [END Terraform plan scanning]  
 
 # [START tf-apply]
 - id: 'tf apply'
