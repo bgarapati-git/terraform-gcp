@@ -71,7 +71,7 @@ steps:
       echo "************Checkov installed******************"
       ls
       pwd
-      cat tf.json
+      cat ./tf.json
       checkov -f tf.json
       echo "************Checkov done******************"
 # [END Terraform plan scanning]  
