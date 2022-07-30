@@ -43,10 +43,10 @@ steps:
       checkov -f tf.json -o json >result.json $*
       #Check the status of the last command
       echo $?
-      if [ $? == 1 ]; then 
-         echo "Issues identified during scanning, exiting"
-         exit 1
-      fi
+      #if [ $? == 1 ]; then 
+      #   echo "Issues identified during scanning, exiting"
+      #   exit 1
+      #fi
       echo "*****************"
 # [END Terraform plan scanning]  
 
