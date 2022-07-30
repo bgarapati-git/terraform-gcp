@@ -41,7 +41,6 @@ steps:
       echo "**********install*******"
       ls
       checkov -f tf.json -o json >result.json
-      echo $?
       if [ $? == 1 ]; then
         echo "issues in scan, exiting"
         exit 1
