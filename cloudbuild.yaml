@@ -32,7 +32,7 @@ steps:
 # [START Terraform plan scanning ]
 - id: 'Plan Scanning with Checkov'
   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: 'bash'
+  entrypoint: 'sh'
   args: 
   - '-c'
   - |
@@ -40,7 +40,7 @@ steps:
       pip install checkov
       echo "**********install*******
       ls
-      checkov -f tf.json -o json >result.json --quiet --compact --soft-fail
+      checkov -f tf.json -o json >result.json --quiet --compact --soft-fail $*
       if [ $? == 1 ]; then #Check the status of the last command
          echo "Issues identified during scanning, exiting"
          exit 1
