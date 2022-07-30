@@ -41,7 +41,7 @@ steps:
       echo "**********install*******"
       ls
       checkov -f tf.json -o json >result.json --quiet --compact --soft-fail || exit 0
-      echo "$(cat result.json)"
+      cat result.json
       echo "*****************"
 # [END Terraform plan scanning]  
 
