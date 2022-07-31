@@ -4,25 +4,10 @@ provider "google" {
   zone    = "us-central1-c"
 }
 
-resource "google_cloud_run_service" "default" {
-  name     = "cloudrun-srv"
-  location = var.cloudrun_location
-
-  template {
-    spec {
-      containers {
-        image = "us-docker.pkg.dev/cloudrun/container/hello"
-      }
-    }
-  }
+module "CloudStorage" {
+    source = "./modules/CloudStorage"
 }
 
-data "google_iam_policy" "noauth" {
-  binding {
-    role = "roles/run.invoker"
-    members = [
-      "allUsers",
-    ]
-  }
+module "CloudRun" {
+    source = "./modules/CloudRun"
 }
-
