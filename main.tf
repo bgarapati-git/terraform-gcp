@@ -13,8 +13,3 @@ module "CloudStorage" {
     enable_versioning = true
 }
 
-module "CloudRun" {
-    source = "./modules/CloudRun"
-    project_id = "var.project_id"
-    cloudrun_location = "var.cloudrun_location"
-}
