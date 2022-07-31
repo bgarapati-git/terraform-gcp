@@ -21,7 +21,7 @@ steps:
   - '-c'
   - |
       pip install checkov
-      checkov -f tf.json -o json >result.json skip-check=CKV_GCP*
+      checkov -f tf.json -o json >result.json #skip-check=CKV_GCP*
       if [ $? == 1 ]; then
         echo "issues in scan, exiting"
         exit 1
