@@ -37,3 +37,9 @@ variable "enable_versioning" {
   type        = bool
   default     = false
 }
+
+variable "cloudrun_location" {
+  description = "Cloud Run Location."
+  type        = string
+  default     = "EU"
+}
