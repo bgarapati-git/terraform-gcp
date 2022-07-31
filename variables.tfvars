@@ -4,3 +4,6 @@ gcs_location = "EU"
 force_destroy = true
 storage_class = "STANDARD"
 enable_versioning = true
+
+cloudrun_location = "EU"
+
