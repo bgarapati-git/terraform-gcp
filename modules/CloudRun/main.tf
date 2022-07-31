@@ -1,12 +1,7 @@
-provider "google" {
-  project = var.project_id
-  region  = "us-central1"
-  zone    = "us-central1-c"
-}
-
 resource "google_cloud_run_service" "default" {
   name     = "cloudrun-srv"
   location = var.cloudrun_location
+  project  = var.project_id
 
   template {
     spec {
