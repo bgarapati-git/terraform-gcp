@@ -16,6 +16,7 @@ steps:
   args: 
   - '-c'
   - |
+      cd CloudStorage
       terraform init || exit 1
       
 # [START tf-plan]
