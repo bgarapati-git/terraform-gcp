@@ -1,10 +1,3 @@
-provider "google" {
-  #credentials = var.service_account_json_path
-  project = var.project_id
-  region  = "us-central1"
-  zone    = "us-central1-c"
-}
-
 resource "google_storage_bucket" "bucket" {
   name          = "${var.bucket_name}-${var.project_id}"
   project       = var.project_id
