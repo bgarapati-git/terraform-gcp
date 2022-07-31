@@ -6,7 +6,7 @@ steps:
   args: 
   - '-c'
   - | 
-      cd CloudStorage
+      #cd CloudStorage
       #cd CloudRun
       pwd
       terraform init
@@ -24,7 +24,7 @@ steps:
   - '-c'
   - |
       pip install checkov
-      cd CloudStorage
+      #cd CloudStorage
       #cd CloudRun
       checkov -f tf.json -o json >result.json --skip-check=CKV_GCP*
       if [ $? == 1 ]; then
