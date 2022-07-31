@@ -6,11 +6,7 @@ steps:
   args: 
   - '-c'
   - | 
-      #cd CloudStorage
-      #cd CloudRun
-      pwd
       terraform init
-      echo "****Terraform Initialized**********"
       terraform plan -var-file=variables.tfvars -out=tf.plan 
       terraform show -json tf.plan >tf.json
 # [END tf-plan]
@@ -25,9 +21,7 @@ steps:
   - '-c'
   - |
       pip install checkov
-      #cd CloudStorage
-      #cd CloudRun
-      checkov -f tf.json -o json >result.json --skip-check=CKV_GCP*
+      checkov -f tf.json -o json >result.json skip-check=CKV_GCP*
       if [ $? == 1 ]; then
         echo "issues in scan, exiting"
         exit 1
