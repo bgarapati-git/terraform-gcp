@@ -21,16 +21,13 @@ steps:
   args: 
   - '-c'
   - |
-      echo "*****************"
       pip install checkov
-      echo "**********install*******"
-      #cd CloudStorage
+      cd CloudStorage
       checkov -f tf.json -o json >result.json --skip-check=CKV_GCP*
       if [ $? == 1 ]; then
         echo "issues in scan, exiting"
         exit 1
       fi
-      echo "*****************"
 # [END Terraform plan scanning]  
 
 # [START tf-apply]
@@ -40,7 +37,7 @@ steps:
   args: 
   - '-c'
   - | 
-      cd ./CloudStorage
+      cd CloudStorage
       #terraform apply -var-file="variables.tfvars" -auto-approve || exit 1
 # [END tf-apply]      
 
