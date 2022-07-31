@@ -43,8 +43,6 @@ steps:
   args: 
   - '-c'
   - | 
-      cd CloudStorage
-      #cd CloudRun
       #terraform apply -var-file="variables.tfvars" -auto-approve || exit 1
 # [END tf-apply]      
 

@@ -5,11 +5,11 @@ provider "google" {
 
 module "CloudStorage" {
     source = "./modules/CloudStorage"
-    bucket_name = "var.bucket_name"
-    project_id = "var.project_id"
-    gcs_location = "var.gcs_location"
-    force_destroy = true
-    storage_class = "var.storage_class"
+    bucket_name = var.bucket_name
+    project_id = var.project_id
+    gcs_location = var.gcs_location
+    force_destroy = var.force_destroy
+    storage_class = var.storage_class
     enable_versioning = true
 }
 
