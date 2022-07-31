@@ -6,8 +6,15 @@ provider "google" {
 
 module "CloudStorage" {
     source = "./modules/CloudStorage"
+    bucket_name = var.bucket_name
+    project_id = var.project_id 
+    gcs_location = gcs_location
+    force_destroy = force_destroy
+    storage_class = var.storage_class
+    enable_versioning = true
 }
 
 module "CloudRun" {
     source = "./modules/CloudRun"
+    cloudrun_location = var.cloudrun_location
 }
