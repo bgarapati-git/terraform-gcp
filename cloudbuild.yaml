@@ -26,6 +26,7 @@ steps:
   args: 
   - '-c'
   - | 
+      cd /workspace/CloudStorage
       terraform plan -var-file=variables.tfvars -out=tf.plan 
       terraform show -json tf.plan >tf.json
       #cat tf.json
@@ -42,7 +43,7 @@ steps:
       echo "*****************"
       pip install checkov
       echo "**********install*******"
-      ls
+      cd /workspace/CloudStorage
       checkov -f tf.json -o json >result.json #--skip-check=CKV_GCP*
       if [ $? == 1 ]; then
         echo "issues in scan, exiting"
@@ -58,7 +59,8 @@ steps:
   args: 
   - '-c'
   - | 
-      #terraform apply -var-file="/workspace/variables.tfvars" -auto-approve || exit 1
+      cd /workspace/CloudStorage
+      #terraform apply -var-file="variables.tfvars" -auto-approve || exit 1
 # [END tf-apply]      
 
 options:
