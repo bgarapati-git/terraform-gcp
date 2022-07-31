@@ -5,3 +5,8 @@ variable "cloudrun_location" {
   type        = string
   default     = "EU"
 }
+
+variable "project_id" {
+  description = "Run Project ID."
+  type        = string
+}
