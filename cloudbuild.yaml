@@ -26,6 +26,9 @@ steps:
   args: 
   - '-c'
   - | 
+      echo "plan"
+      pwd
+      echo "plan ended"
       cd ./CloudStorage
       terraform plan -var-file=variables.tfvars -out=tf.plan 
       terraform show -json tf.plan >tf.json
