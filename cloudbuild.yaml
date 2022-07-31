@@ -2,12 +2,12 @@ steps:
 # [START tf-plan]
 - id: 'tf init and plan'
   name: 'hashicorp/terraform:1.0.0'
-  #waitFor: 'tf init'
   entrypoint: 'sh'
   args: 
   - '-c'
   - | 
-      cd CloudStorage
+      #cd CloudStorage
+      cd CloudRun
       terraform init
       terraform plan -var-file=variables.tfvars -out=tf.plan 
       terraform show -json tf.plan >tf.json
@@ -23,7 +23,8 @@ steps:
   - '-c'
   - |
       pip install checkov
-      cd CloudStorage
+      #cd CloudStorage
+      cd CloudRun
       checkov -f tf.json -o json >result.json --skip-check=CKV_GCP*
       if [ $? == 1 ]; then
         echo "issues in scan, exiting"
@@ -40,7 +41,8 @@ steps:
   args: 
   - '-c'
   - | 
-      cd CloudStorage
+      #cd CloudStorage
+      cd CloudRun
       #terraform apply -var-file="variables.tfvars" -auto-approve || exit 1
 # [END tf-apply]      
 
