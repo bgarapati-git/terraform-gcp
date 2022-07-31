@@ -28,9 +28,9 @@ steps:
   - | 
       echo "plan"
       pwd
-      echo "plan ended"
-      cd ./CloudStorage
+      cd CloudStorage
       pwd
+      echo "plan ended"
       terraform plan -var-file=variables.tfvars -out=tf.plan 
       terraform show -json tf.plan >tf.json
       #cat tf.json
