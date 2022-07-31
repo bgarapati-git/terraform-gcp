@@ -36,3 +36,4 @@ variable "enable_versioning" {
   description = "Enable GCS Bucket versioning."
   type        = bool
   default     = false
+}
