@@ -16,7 +16,8 @@ steps:
 # [START Terraform plan scanning ]
 - id: 'Plan Scanning with Checkov'
   name: 'python'
-  #waitFor: 'tf plan'
+  waitFor: 
+  - 'tf init and plan'
   entrypoint: 'bash'
   args: 
   - '-c'
@@ -33,6 +34,8 @@ steps:
 # [START tf-apply]
 - id: 'tf apply'
   name: 'hashicorp/terraform:1.0.0'
+  waitFor: 
+  - 'Plan Scanning with Checkov'
   entrypoint: 'sh'
   args: 
   - '-c'
