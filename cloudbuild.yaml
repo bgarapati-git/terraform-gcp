@@ -27,15 +27,8 @@ steps:
   args: 
   - '-c'
   - | 
-      echo "plan"
-      pwd
-      cd CloudStorage
-      pwd
-      ls
-      echo "plan ended"
       terraform plan -var-file=variables.tfvars -out=tf.plan 
       terraform show -json tf.plan >tf.json
-      #cat tf.json
 # [END tf-plan]
 
 # [START Terraform plan scanning ]
@@ -49,7 +42,7 @@ steps:
       echo "*****************"
       pip install checkov
       echo "**********install*******"
-      cd CloudStorage
+      #cd CloudStorage
       checkov -f tf.json -o json >result.json --skip-check=CKV_GCP*
       if [ $? == 1 ]; then
         echo "issues in scan, exiting"
