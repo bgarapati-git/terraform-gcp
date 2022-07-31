@@ -10,6 +10,7 @@ steps:
       #cd CloudRun
       pwd
       terraform init
+      echo "****Terraform Initialized*********"
       terraform plan -var-file=variables.tfvars -out=tf.plan 
       terraform show -json tf.plan >tf.json
 # [END tf-plan]
