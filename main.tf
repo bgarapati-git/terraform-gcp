@@ -9,12 +9,12 @@ module "CloudStorage" {
     bucket_name = "var.bucket_name"
     project_id = "var.project_id "
     gcs_location = "var.gcs_location"
-    force_destroy = force_destroy
-    storage_class = var.storage_class
+    force_destroy = true
+    storage_class = "var.storage_class"
     enable_versioning = true
 }
 
 module "CloudRun" {
     source = "./modules/CloudRun"
-    cloudrun_location = var.cloudrun_location
+    cloudrun_location = "var.cloudrun_location"
 }
