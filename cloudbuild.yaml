@@ -21,8 +21,8 @@ steps:
   - '-c'
   - |
       pip install checkov
-      checkov -f tf.json -o json >result.json #--skip-check=CKV_GCP*
-      cat result.json
+      checkov -f tf.json -o json >result.json --skip-check=CKV_GCP*
+      #cat result.json
       if [ $? == 1 ]; then
         echo "issues in scan, exiting"
         exit 1
@@ -39,7 +39,15 @@ steps:
   - '-c'
   - | 
       #terraform apply -var-file="variables.tfvars" -auto-approve || exit 1
-# [END tf-apply]      
+# [END tf-apply]     
+
+# Save test logs to Google Cloud Storage
+artifacts:
+  objects:
+    location: gs://project_storagebucket/
+    paths:
+      - result.json
+# [END cloudbuild_python_logs_yaml]
 
 options:
   logging: CLOUD_LOGGING_ONLY
